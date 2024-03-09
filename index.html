@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZJDF's</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000000;
+        }
+        video {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+
+        .continue-button {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            z-index: 1;
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #000000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s ease-out;
+        }
+        .continue-button:hover {
+            background-color: #000000;
+            transform: scale(1.5);
+        }
+    </style>
+</head>
+<body>
+    <video id="fullscreen-video" loop autoplay>
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <button class="continue-button" onclick="showVideo()">Continue</button>
+
+    <script>
+        function showVideo() {
+            var video = document.getElementById('fullscreen-video');
+            video.style.display = 'block';
+            video.play();
+            var button = document.querySelector('.continue-button');
+            button.style.display = 'none'; // Hide the button
+        }
+
+        window.addEventListener('resize', function() {
+            var video = document.getElementById('fullscreen-video');
+            video.style.width = window.innerWidth + 'px';
+            video.style.height = window.innerHeight + 'px';
+        });
+    </script>
+</body>
+</html>
